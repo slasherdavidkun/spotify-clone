@@ -203,7 +203,6 @@ function pauseSong() {
 	$(".controlButton.pause").hide();
 	audioElement.pause();
 }
-
 </script>
 
 
