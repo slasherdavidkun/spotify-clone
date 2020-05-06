@@ -39,6 +39,18 @@ $(document).on("change", "select.playlist", function() {
 	});
 });
 
+
+function updateEmail(emailClass) {
+	var emailValue = $("." + emailClass).val();
+
+	$.post("includes/handlers/ajax/updateEmail.php", { email: emailValue, username: userLoggedIn})
+	.done(function(response) {
+		$("." + emailClass).nextUntil(".message").text(response);
+	})
+
+
+}
+
 function logout() {
 	$.post("includes/handlers/ajax/logout.php", function() {
 		location.reload();
@@ -56,7 +68,6 @@ function openPage(url) {
 	}
 
 	var encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
-	console.log(encodedUrl);
 	$("#mainContent").load(encodedUrl);
 	$("body").scrollTop(0);
 	history.pushState(null, null, url);
@@ -79,7 +90,7 @@ function removeFromPlaylist(button, playlistId) {
 }
 
 function createPlaylist() {
-	console.log(userLoggedIn);
+
 	var popup = prompt("Please enter the name of your playlist");
 
 	if(popup != null) {
