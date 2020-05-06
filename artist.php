@@ -20,7 +20,7 @@ $artist = new Artist($con, $aristId);
 			<h1 class="artistName"><?php echo $artist->getName(); ?></h1>
 
 			<div class="headerButtons">
-				<button class="button">PLAY</button>
+				<button class="button green">PLAY</button>
 			</div>
 
 		</div>
